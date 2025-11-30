@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Deep Dive into LLMs like ChatGPTPretrainingurl: https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;HuggingFaceFW&#x2F;blogpost-fineweb-v1 website filterFineWeb si focused on English. One dimensional sequence layout in two-dime">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Dive into LLMs like ChatGPT">
+<meta property="og:url" content="http://example.com/2025/11/30/Deep_into_LLMs/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Deep Dive into LLMs like ChatGPTPretrainingurl: https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;HuggingFaceFW&#x2F;blogpost-fineweb-v1 website filterFineWeb si focused on English. One dimensional sequence layout in two-dime">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/Users/q/Library/Application%20Support/typora-user-images/image-20251027171633134.png">
+<meta property="article:published_time" content="2025-11-30T07:28:26.000Z">
+<meta property="article:modified_time" content="2025-11-30T14:15:48.915Z">
+<meta property="article:author" content="Gecko">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Users/q/Library/Application%20Support/typora-user-images/image-20251027171633134.png">
+
+
+<link rel="canonical" href="http://example.com/2025/11/30/Deep_into_LLMs/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/11/30/Deep_into_LLMs/","path":"2025/11/30/Deep_into_LLMs/","title":"Deep Dive into LLMs like ChatGPT"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Deep Dive into LLMs like ChatGPT | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Deep-Dive-into-LLMs-like-ChatGPT"><span class="nav-number">1.</span> <span class="nav-text">Deep Dive into LLMs like ChatGPT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pretraining"><span class="nav-number">1.1.</span> <span class="nav-text">Pretraining</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#website-filter"><span class="nav-number">1.1.1.</span> <span class="nav-text">website filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tokenization"><span class="nav-number">1.1.2.</span> <span class="nav-text">Tokenization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Network-Training"><span class="nav-number">1.1.3.</span> <span class="nav-text">Neural Network Training</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inference"><span class="nav-number">1.1.4.</span> <span class="nav-text">Inference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo-reproducing-OpenAI%E2%80%99s-GPT-2"><span class="nav-number">1.1.5.</span> <span class="nav-text">Demo: reproducing OpenAI’s GPT-2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POST-TRAINING-Supervised-Fine-tuning"><span class="nav-number">1.2.</span> <span class="nav-text">POST - TRAINING: Supervised Fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversations"><span class="nav-number">1.2.1.</span> <span class="nav-text">Conversations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversation-Protocol"><span class="nav-number">1.2.2.</span> <span class="nav-text">Conversation Protocol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversation-Datasets-DISPEL-the-magic-of-talking-to-AI"><span class="nav-number">1.2.3.</span> <span class="nav-text">Conversation Datasets: DISPEL the magic of talking to AI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hallucinations"><span class="nav-number">1.2.4.</span> <span class="nav-text">Hallucinations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mitigation-1-%E2%80%9CSorry-I-don%E2%80%99t-know-%E2%80%9D"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Mitigation #1 “Sorry, I don’t know.”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mitigation-2-Give-model-an-opportunity"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Mitigation #2 Give model an opportunity</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Knowledge-of-itself"><span class="nav-number">1.2.5.</span> <span class="nav-text">Knowledge of itself</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Models-need-tokens-to-think"><span class="nav-number">1.2.6.</span> <span class="nav-text">Models need tokens to think</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Models-can%E2%80%99t-count"><span class="nav-number">1.2.7.</span> <span class="nav-text">Models can’t count</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">1.2.8.</span> <span class="nav-text">Conclusion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Post-training-Reinforcement-Learning"><span class="nav-number">1.3.</span> <span class="nav-text">Post-training: Reinforcement Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deepseek-R1-brings-RL-back"><span class="nav-number">1.3.1.</span> <span class="nav-text">Deepseek R1 brings RL back</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RLHF-Learning-in-underifiable-domains"><span class="nav-number">1.3.2.</span> <span class="nav-text">RLHF: Learning in underifiable domains</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.4.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gecko</p>
+  <div class="site-description" itemprop="description">Do one thing and do it well</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/30/Deep_into_LLMs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gecko">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Do one thing and do it well">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Deep Dive into LLMs like ChatGPT | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Deep Dive into LLMs like ChatGPT
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-11-30 15:28:26 / Modified: 22:15:48" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Deep-Dive-into-LLMs-like-ChatGPT"><a href="#Deep-Dive-into-LLMs-like-ChatGPT" class="headerlink" title="Deep Dive into LLMs like ChatGPT"></a>Deep Dive into LLMs like ChatGPT</h1><h2 id="Pretraining"><a href="#Pretraining" class="headerlink" title="Pretraining"></a>Pretraining</h2><p>url: <a target="_blank" rel="noopener" href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1</a></p>
+<h3 id="website-filter"><a href="#website-filter" class="headerlink" title="website filter"></a>website filter</h3><p>FineWeb si focused on English.</p>
+<p>One dimensional sequence layout in two-dimensional way</p>
+<h3 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h3><p>raw texts -&gt; symbols (tokens)</p>
+<p>How GPT4 do tokenization? </p>
+<h3 id="Neural-Network-Training"><a href="#Neural-Network-Training" class="headerlink" title="Neural Network Training"></a>Neural Network Training</h3><p>How these tokens follow each other in sequence</p>
+<p>probability how they follow each other</p>
+<p>parameters are randomly set</p>
+<h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p><strong>Generating new data from model</strong></p>
+<p>Network give us probebilities</p>
+<h3 id="Demo-reproducing-OpenAI’s-GPT-2"><a href="#Demo-reproducing-OpenAI’s-GPT-2" class="headerlink" title="Demo: reproducing OpenAI’s GPT-2"></a>Demo: reproducing OpenAI’s GPT-2</h3><p>GPT-2 was published by OpenAI in 2019</p>
+<p>Paper: “Language Models are Unsupervised Multitask Learners”</p>
+<p>Transformer neural networks with:</p>
+<ul>
+<li>1.6 billion parameters</li>
+<li>maximum context length of 1024 tokens (window)</li>
+<li>trained on about 100 billion tokens</li>
+</ul>
+<p>“Base” Model</p>
+<p>GPT2</p>
+<p>Llma3</p>
+<p>If you ask it questions, it still feedback questions. E.g. “What is 2+2?” The answer will not be “4, What else do you want me to answer.” It will just do tokenization to what comes next. </p>
+<p>First, it’s not an assistant yet it’s a token autocomplete. </p>
+<p>Second, it’s a stochastic(随机的) system</p>
+<p>recollection of some of the internet documents</p>
+<p>The model <strong>learn from the websites</strong> from internet. So if you enter the same texts as wiki, the output will be the same as wiki. Let’s say, these models can be extremely good at memorization. </p>
+<p>Wikipedia is a high quality source. So when you are training the model, you will preferencetially sample from those sources.</p>
+<p>The pretraining process -&gt; Base model “internet document simulator”</p>
+<h2 id="POST-TRAINING-Supervised-Fine-tuning"><a href="#POST-TRAINING-Supervised-Fine-tuning" class="headerlink" title="POST - TRAINING: Supervised Fine-tuning"></a>POST - TRAINING: Supervised Fine-tuning</h2><h3 id="Conversations"><a href="#Conversations" class="headerlink" title="Conversations"></a>Conversations</h3><p>Take Base model from Pretraining, continue training by exact same algorithms, the exact same everything except we’re swapping out the data set for conversations.</p>
+<h3 id="Conversation-Protocol"><a href="#Conversation-Protocol" class="headerlink" title="Conversation Protocol"></a>Conversation Protocol</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User : What <span class="keyword">is</span> <span class="number">2</span>+<span class="number">2</span>?</span><br><span class="line">assistant: <span class="number">2</span>+<span class="number">2</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;|im_start|&gt;</code>, <code>&lt;|im_sep|&gt;</code>, <code>&lt;|im_end|&gt;</code> These are the special tokens are introduced and interspersed with text so that they get the model to learn where is the start, end, sep.</p>
+<p>The conversation which we think is a structured object end up being turned via some encoding into one dimensional sequence of tokens. Because it’s <strong>one dimensional sequence</strong>, it means we can apply this as we apply before in pretraining.</p>
+<h3 id="Conversation-Datasets-DISPEL-the-magic-of-talking-to-AI"><a href="#Conversation-Datasets-DISPEL-the-magic-of-talking-to-AI" class="headerlink" title="Conversation Datasets: DISPEL the magic of talking to AI"></a><em><u>Conversation Datasets: DISPEL the magic of talking to AI</u></em></h3><p>When you go to ChatGPT and you give it a question and you hit enter. What is coming back is kind of like statistically <strong>aligned with what’s happening in the trainging set</strong>. In these training sets, they really have a seed in human following <strong>labeling</strong> instructions. </p>
+<p>So what are you actually talking to ChatGPT or how should you think about it? It’s not coming from some “magical” AI like roughly speaking. It’s coming from something that is statistically imitating <strong>human labelers</strong> which come from labeling instructions written by these <strong>companies</strong>. It’s almost as if you’re <strong>asking human labeler</strong>. Imagine that the answer that is given to you from ChatGPT is some kind of a simulation of a human labeler.</p>
+<p>The <strong>human labeler</strong> is the highly skilled <strong>experts</strong> which companies <strong>hire</strong>. </p>
+<p>But remember, the model already has a ton of knowledge from its pre-training on the internet. The <strong>pre-training knowledge</strong> that has then <strong>combined with the post-training data set</strong> that results in this kind of an imitation.</p>
+<h3 id="Hallucinations"><a href="#Hallucinations" class="headerlink" title="Hallucinations"></a>Hallucinations</h3><p>If you ask GPT who is an unknow man (who is not in the training model), the model.</p>
+<h4 id="Mitigation-1-“Sorry-I-don’t-know-”"><a href="#Mitigation-1-“Sorry-I-don’t-know-”" class="headerlink" title="Mitigation #1 “Sorry, I don’t know.”"></a>Mitigation #1 “Sorry, I don’t know.”</h4><p>Figure the boundary of its knowledge and then they add examples to the training set for the things where the model doesn’t know them, the correct answer is that <u>the model doesn’t know them.</u></p>
+<h4 id="Mitigation-2-Give-model-an-opportunity"><a href="#Mitigation-2-Give-model-an-opportunity" class="headerlink" title="Mitigation #2 Give model an opportunity"></a>Mitigation #2 Give model an opportunity</h4><p>If your friend asks you a question and you don’t know, what would you do? You could do some search and then tell me what answer is. We can do the exact same thing with these models.</p>
+<p>Think of the knowledge inside of the neural networks inside its billions of parameters. Think of that as a vague recollection of the things that the model has seen during the training or pre-training stages long time ago. From the perspective of human, think of that as something you read a month ago. If you keep reading something then you will remember it and the model remembers that. But if it’s something rare then you probably don’t hava a good recollections of that information. You and I just look it up. When you look it up, what you’re doning is basically <strong>refreshing your working memory.</strong> </p>
+<p><code>&lt;search_start&gt;</code>Who is Jie Qi?<code>&lt;search_end&gt;</code> Stop generating texts, model copy paste the question into Bing.com and the data in the web page is accessible to models.</p>
+<p>Traing the model how to use web search (tools) (where the <code>&lt;search_start&gt;</code> starts and <code>&lt;search_start&gt;</code> ends)</p>
+<p>*<u><strong>Knowledge in the parameters  &#x3D;&#x3D; Vague recollection (e.g. of something you read a month ago)</strong></u>*</p>
+<p><em><u><strong>Knowledge in the tokens of the context window &#x3D;&#x3D; Working memory</strong></u></em></p>
+<p><strong>We want the model to recall some significant things, it’s much better to just give it to them.</strong></p>
+<p>“Can you summarize for me chapter 1 of Jane Austen‘s pride and prejudice? <u>I’m attaching it below for your reference.</u>“</p>
+<p>You and I work in the same way. it will produce much better summary when you reread the chapter before you summarize it.</p>
+<h3 id="Knowledge-of-itself"><a href="#Knowledge-of-itself" class="headerlink" title="Knowledge of itself"></a>Knowledge of itself</h3><p>Q: Who built you? </p>
+<ol>
+<li><p>Hardcoded conversations around topics in the Conversation data.</p>
+<p>Q: Tell me about yourself.</p>
+<p>A: I’m OLMo, an open language model developed by AI2</p>
+</li>
+<li><p><strong>“system message”</strong> basically <strong>invisible tokens</strong> hidden in the context window and remind the model its identity: You are the model developed by OpenAI…</p>
+</li>
+</ol>
+<h3 id="Models-need-tokens-to-think"><a href="#Models-need-tokens-to-think" class="headerlink" title="Models need tokens to think"></a>Models need tokens to think</h3><p>e.g. 1 Try to do all the compstation in a single token</p>
+<p><u>The answer is $3.</u> This is because 2 oranges at $2 are $4 total. So the 3 apples cost $9, and therefore each apple is 9&#x2F;3&#x3D;$3.</p>
+<p>e.g. 2</p>
+<p>The total cost of the oranges is $4. 13-4&#x3D;9, the cost of the 3 apples is $9. 9&#x2F;3&#x3D;3, so each apple costs $3. <u>The answer is $3.</u></p>
+<p>There’s a finite amount of computation that happens here for every single token. You should think of this as a very small amount of comptation and this amount of computation is almost roughly fixed for every single token in this sequence. The more tokens you feed in, the more expensive this <strong>forward pass</strong> will be. </p>
+<img src="/Users/q/Library/Application Support/typora-user-images/image-20251027171633134.png" alt="image-20251027171633134" style="zoom:50%;" />
+
+
+
+<p>They are working on <strong>one dimensional</strong> sequence from <strong>left to right</strong>.</p>
+<p>The model basically do arbitrary computation in a single forward pass to get a single token. So We have to <strong>distribute</strong> our reasoning and our computeration across many tokens because every single token is only spending a finite amount of computation on it. We can’t have or expect too much computation out of the model in any single individual token because there’s only so much computation that happens per token roughly fixed amount of computation here.</p>
+<p>e.g. 1 Cram all of the computation of this problem into one single token. It has to emit the correct answer 3.</p>
+<p>It’s already in the token window so it’s not actually being calculated.</p>
+<p>So if you are answering the question directly and immediately, you are training the model to try to basically guess the answer in a single token. That is not gonna work because the finite amount of computation happens per token. </p>
+<p>left to right, slowly &#x3D;&#x3D; not that expensive</p>
+<p>We are teaching the model to spread out its reasoning and comptation over the tokens.</p>
+<h3 id="Models-can’t-count"><a href="#Models-can’t-count" class="headerlink" title="Models can’t count"></a>Models can’t count</h3><p>Models are not good with spelling. <strong>Models see tokens</strong>(text chunks), <strong>not individual letters</strong>.</p>
+<p>If you ask GPT: Print back the following string. But only print every 3rd character, start with the first one.</p>
+<p>It would be wrong answer.</p>
+<p>Models sometimes <strong>fall short</strong> in super simple problems like this: “What is bigger 9.11 or 9.9?”</p>
+<p>When you scrutinize the activations inside of the neural networks, when you look at some of the features and what features turn on and off and what neurons turn on and off. A bunch of neurons inside of the neural network light up that are usually associated with <strong>Bible verse</strong>.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>So far, the difference between Stage 1 pre-training and Stage 2 Post-training is the data set. </p>
+<p>Pre-training’s dataset is Internet documents. </p>
+<p>Post-training create and curate a very nice data set of conversations. So we want millions of conversations on all kinds of diverse topics between a human and an assistant. And these conversations are created by humans. So humans write prompts and ideal responses based on labeling documents. Currently language models {<a target="_blank" rel="noopener" href="https://atlas.nomic.ai/%7D">https://atlas.nomic.ai/}</a> can help us create these data sets.</p>
+<p>Then we get a <strong>SFT model</strong>, an assistant, trained by Supervised Finetuning</p>
+<h2 id="Post-training-Reinforcement-Learning"><a href="#Post-training-Reinforcement-Learning" class="headerlink" title="Post-training: Reinforcement Learning"></a>Post-training: Reinforcement Learning</h2><p>Just like you go to school, we let “<strong>models go to school</strong>“.</p>
+<p>Exposition: background knowledge, like pre-training </p>
+<p>Problems and worked Solutions: Supervised fine-tuning, imitation of experts, how they solve the problems </p>
+<p>Practice problems: reinforcement learning, Given the problem description, not the solutions, but given the final answer.</p>
+<p>We train them very similar to how we train children.</p>
+<p>Read all the textbooks at the same time. </p>
+<p>First, pre-training: Read all the exposition to build a knowledge base -&gt; base model</p>
+<p>Second, sft-stage: Look at all the fixed solutions from human experts across all the textbooks -&gt; sft model imitate experts.</p>
+<p>Last, Reinforcement Learning: Across all the textbooks, we only do the practice problems.</p>
+<h3 id="Deepseek-R1-brings-RL-back"><a href="#Deepseek-R1-brings-RL-back" class="headerlink" title="Deepseek R1 brings RL back"></a>Deepseek R1 brings RL back</h3><p>The previous two stages are very standard, all the different llm providers. But the last stage is not standard yet. </p>
+<h3 id="RLHF-Learning-in-underifiable-domains"><a href="#RLHF-Learning-in-underifiable-domains" class="headerlink" title="RLHF: Learning in underifiable domains"></a>RLHF: Learning in underifiable domains</h3><p>The domains that are harder to score our different solutions to this problem.</p>
+<p><strong>RLHF</strong> approach, involve humans just a little bit, then train a whole separate neural network that we call <strong>reward model</strong> which can <strong>imitate human scores</strong>. We ask humans to order instead of giving score because order is much easier than giving precise scores. Then compare the order from human and reward model, calculate the loss between these two order which is accessible by some kind of mathematical equations.</p>
+<p>reward model is gameable. 滥用</p>
+<p>There are two main stages we talked above. First the training stage where we tune the parameters of the model to perform the task well. Once we get the parameters, we fix them and then we deploy the model for inference. From there the model is fixed, it doesn’t change anymore. It doesn’t learn from all the stuff that it has done in test time. It’s <u><strong>fixed</strong></u> <strong>number of parameters</strong>. The only thing that is <u><strong>changing</strong></u> is now the <strong>token inside the context windows</strong>. </p>
+<p>So the only type of learning or test time learning the model <u>has access to</u> is the in context learning of its <strong>dynamically adjustable context window</strong> depending on what it is doing at test.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>How do we see the output of ChatGPT?</p>
+<p><strong><u>The neural network simulation of data labeler at openai following the labeling instructions of OpenAI.</u></strong></p>
+<p>As if I gave a query to a data labeler of openai and the data labeler first reads all of the labeling instructions from openai then spend 2 hours writing up the ideal assistant response to this query and give it to me. But I don’t have to wait 2 hours so what we’re getting here is a neural network simulation of that process. We have to keep in mind that what’s easy for these neural networks are different from what’s easy or difficult for humans.</p>
+<p>GPT4o doesn’t do reinforcement learning, it does do RLHF. But RLHF is not RL, there’s no time in there. It’s just a little bit of fine-tuning.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/11/30/Vue/" rel="next" title="Vue">
+                  Vue <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Gecko</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

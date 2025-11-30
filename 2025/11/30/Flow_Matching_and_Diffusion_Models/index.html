@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Introduction to Flow Matching and Diffusion ModelsLecture 1Session 1Generation means sampling the data distribution. Conditional data distribution. Unconditional to Conditional. Initial distribution (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flow Matching and Diffusion Models">
+<meta property="og:url" content="http://example.com/2025/11/30/Flow_Matching_and_Diffusion_Models/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Introduction to Flow Matching and Diffusion ModelsLecture 1Session 1Generation means sampling the data distribution. Conditional data distribution. Unconditional to Conditional. Initial distribution (">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-11-30T07:28:26.000Z">
+<meta property="article:modified_time" content="2025-11-30T14:14:04.295Z">
+<meta property="article:author" content="Gecko">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/11/30/Flow_Matching_and_Diffusion_Models/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/11/30/Flow_Matching_and_Diffusion_Models/","path":"2025/11/30/Flow_Matching_and_Diffusion_Models/","title":"Flow Matching and Diffusion Models"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Flow Matching and Diffusion Models | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-Flow-Matching-and-Diffusion-Models"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Flow Matching and Diffusion Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-1"><span class="nav-number">1.1.</span> <span class="nav-text">Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Session-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">Session 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session-2-Flow-and-Diffusion-Models"><span class="nav-number">1.1.2.</span> <span class="nav-text">Session 2 Flow and Diffusion Models</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Flow-Model"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">2.1 Flow Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Diffusion-Model"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2.2 Diffusion Model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-2"><span class="nav-number">1.2.</span> <span class="nav-text">Lecture 2</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gecko</p>
+  <div class="site-description" itemprop="description">Do one thing and do it well</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/30/Flow_Matching_and_Diffusion_Models/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gecko">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="Do one thing and do it well">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Flow Matching and Diffusion Models | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flow Matching and Diffusion Models
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-11-30 15:28:26 / Modified: 22:14:04" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Introduction-to-Flow-Matching-and-Diffusion-Models"><a href="#Introduction-to-Flow-Matching-and-Diffusion-Models" class="headerlink" title="Introduction to Flow Matching and Diffusion Models"></a>Introduction to Flow Matching and Diffusion Models</h1><h2 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h2><h3 id="Session-1"><a href="#Session-1" class="headerlink" title="Session 1"></a>Session 1</h3><p>Generation means sampling the data distribution.</p>
+<p>Conditional data distribution. Unconditional to Conditional.</p>
+<p>Initial distribution (Gaussian) -&gt; data distribution.</p>
+<h3 id="Session-2-Flow-and-Diffusion-Models"><a href="#Session-2-Flow-and-Diffusion-Models" class="headerlink" title="Session 2 Flow and Diffusion Models"></a>Session 2 Flow and Diffusion Models</h3><h4 id="2-1-Flow-Model"><a href="#2-1-Flow-Model" class="headerlink" title="2.1 Flow Model"></a>2.1 Flow Model</h4><p>Two objects:</p>
+<p>​	<u>Trajectory</u> is a function of <strong>time</strong> (0 to 1). time t -&gt; vector Xt</p>
+<p>​	<u>Vector Field</u> <strong>spatial</strong> &amp;&amp; <strong>time</strong> component.  (x,t) -&gt; ut(x)</p>
+<p><u>ODE</u> describes conditions on a <strong><u>trajectory</u></strong> with Initial condition X0. We should follow along the <u>vector field</u> which describes <strong>direction</strong>. When we follow the time vectors across time, <u>directions</u> change over time because the <strong>vector field here is time dependent</strong>.</p>
+<p><u>Flow</u> is a collection of <u>teajectories</u> that follow ODEs which gather solutions for different initials conditions. We gather them in one function and we call that a <u>Flow</u>.</p>
+<p>​	- A <u>vector</u> field defines a ODE in </p>
+<p>​	- A <u>trajectory</u> XT is a solution to this ODE. </p>
+<p>​	- A flow defines a collection of solutions for that various initial conditions.</p>
+<p><u><strong>Flow model</strong></u></p>
+<p>​	<u>Neural network</u> itself is a vector field</p>
+<p>​	<u>Random init</u></p>
+<p>​	<u>ODE</u></p>
+<p>The flow is the map that we implicitly get by simulating this ODE</p>
+<h4 id="2-2-Diffusion-Model"><a href="#2-2-Diffusion-Model" class="headerlink" title="2.2 Diffusion Model"></a>2.2 Diffusion Model</h4><p><u>Stochastic Process</u> Stochastic differential equations are not inherently deterministic like ODEs. Their solutions are not trajectories but <strong>random trajectories</strong>. <strong>Think stochastic process as random trajectory.</strong></p>
+<p><u>Vector Field</u> Like before, with <strong>spatial and time</strong> component, returns a vector. + <strong>Diffusion coefficient</strong> which we call Sigma here. Sigma is non negative. If Sigma is 0, we will not inject any noise or randomness; if Sigma is very large, we inject more noise.</p>
+<p><u>Stochastic differential equations</u> (SDEs)</p>
+<p><u>Brownian Motion</u>:  random walk continuous space and time </p>
+<p>​	Stochastic process W &#x3D; (Wt) t &#x3D;0</p>
+<ol>
+<li>W0 &#x3D; 0 Always start at 0</li>
+<li>Gaussian increments: Normal distribution, increase linearly in time </li>
+<li>Independent increments: random but increasing</li>
+</ol>
+<p>Describe an ODE in a form that does not rely on derivatives.</p>
+<p>The next time step is the previous time step + h given by to this Vector field + some increment from a brownian motion which is effictive noise, scale by the diffusion coefficient Sigma t. If the sigma t is 0, this is 0. And this is just ODE.</p>
+<p>ODE have trajectories as solutions.</p>
+<p>SDE have stochastic process, it’s random trajectory.</p>
+<p>To define a ODE, we need a vector field. </p>
+<p>To define a SDE, we need a vector field + a diffusion coefficient.</p>
+<p>ODE is defined by a derivative and an initial condition. </p>
+<p>SDE vector field + small noise added from the Brownian motion</p>
+<p><u><strong>Diffusion Model</strong></u>: Convert init distribution(e.g. Gaussian) to data distribution</p>
+<p>​	<u>Neural networks</u></p>
+<p>​	<u>Diffusion coefficient</u>, fixed</p>
+<p>​	<u>Random init</u></p>
+<p>​	<u>SDE</u> </p>
+<h2 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h2><p>Conditional</p>
+<p>![image-20251105171739378](&#x2F;Users&#x2F;q&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20251105171739378.png)</p>
+<p>Marginal</p>
+<p>![image-20251105171756702](&#x2F;Users&#x2F;q&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20251105171756702.png)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/11/30/Intro_to_LLM/" rel="prev" title="Intro to LLM">
+                  <i class="fa fa-angle-left"></i> Intro to LLM
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/11/30/Japanese/" rel="next" title="Japanese">
+                  Japanese <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Gecko</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
