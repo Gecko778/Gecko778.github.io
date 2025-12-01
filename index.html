@@ -463,9 +463,15 @@ $(function () {
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-11-30 15:28:26 / Modified: 22:21:07" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+      <time title="Created: 2025-11-30 15:28:26" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-12-02 03:41:32" itemprop="dateModified" datetime="2025-12-02T03:41:32+08:00">2025-12-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -490,47 +496,14 @@ $(function () {
           <h1 id="Introduction-to-Flow-Matching-and-Diffusion-Models"><a href="#Introduction-to-Flow-Matching-and-Diffusion-Models" class="headerlink" title="Introduction to Flow Matching and Diffusion Models"></a>Introduction to Flow Matching and Diffusion Models</h1><h2 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h2><h3 id="Session-1"><a href="#Session-1" class="headerlink" title="Session 1"></a>Session 1</h3><p>Generation means sampling the data distribution.</p>
 <p>Conditional data distribution. Unconditional to Conditional.</p>
 <p>Initial distribution (Gaussian) -&gt; data distribution.</p>
-<h3 id="Session-2-Flow-and-Diffusion-Models"><a href="#Session-2-Flow-and-Diffusion-Models" class="headerlink" title="Session 2 Flow and Diffusion Models"></a>Session 2 Flow and Diffusion Models</h3><h4 id="2-1-Flow-Model"><a href="#2-1-Flow-Model" class="headerlink" title="2.1 Flow Model"></a>2.1 Flow Model</h4><p>Two objects:</p>
-<p>​	<u>Trajectory</u> is a function of <strong>time</strong> (0 to 1). time t -&gt; vector Xt</p>
-<p>​	<u>Vector Field</u> <strong>spatial</strong> &amp;&amp; <strong>time</strong> component.  (x,t) -&gt; ut(x)</p>
-<p><u>ODE</u> describes conditions on a <strong><u>trajectory</u></strong> with Initial condition X0. We should follow along the <u>vector field</u> which describes <strong>direction</strong>. When we follow the time vectors across time, <u>directions</u> change over time because the <strong>vector field here is time dependent</strong>.</p>
-<p><u>Flow</u> is a collection of <u>teajectories</u> that follow ODEs which gather solutions for different initials conditions. We gather them in one function and we call that a <u>Flow</u>.</p>
-<p>​	- A <u>vector</u> field defines a ODE in </p>
-<p>​	- A <u>trajectory</u> XT is a solution to this ODE. </p>
-<p>​	- A flow defines a collection of solutions for that various initial conditions.</p>
-<p><u><strong>Flow model</strong></u></p>
-<p>​	<u>Neural network</u> itself is a vector field</p>
-<p>​	<u>Random init</u></p>
-<p>​	<u>ODE</u></p>
-<p>The flow is the map that we implicitly get by simulating this ODE</p>
-<h4 id="2-2-Diffusion-Model"><a href="#2-2-Diffusion-Model" class="headerlink" title="2.2 Diffusion Model"></a>2.2 Diffusion Model</h4><p><u>Stochastic Process</u> Stochastic differential equations are not inherently deterministic like ODEs. Their solutions are not trajectories but <strong>random trajectories</strong>. <strong>Think stochastic process as random trajectory.</strong></p>
-<p><u>Vector Field</u> Like before, with <strong>spatial and time</strong> component, returns a vector. + <strong>Diffusion coefficient</strong> which we call Sigma here. Sigma is non negative. If Sigma is 0, we will not inject any noise or randomness; if Sigma is very large, we inject more noise.</p>
-<p><u>Stochastic differential equations</u> (SDEs)</p>
-<p><u>Brownian Motion</u>:  random walk continuous space and time </p>
-<p>​	Stochastic process W &#x3D; (Wt) t &#x3D;0</p>
-<ol>
-<li>W0 &#x3D; 0 Always start at 0</li>
-<li>Gaussian increments: Normal distribution, increase linearly in time </li>
-<li>Independent increments: random but increasing</li>
-</ol>
-<p>Describe an ODE in a form that does not rely on derivatives.</p>
-<p>The next time step is the previous time step + h given by to this Vector field + some increment from a brownian motion which is effictive noise, scale by the diffusion coefficient Sigma t. If the sigma t is 0, this is 0. And this is just ODE.</p>
-<p>ODE have trajectories as solutions.</p>
-<p>SDE have stochastic process, it’s random trajectory.</p>
-<p>To define a ODE, we need a vector field. </p>
-<p>To define a SDE, we need a vector field + a diffusion coefficient.</p>
-<p>ODE is defined by a derivative and an initial condition. </p>
-<p>SDE vector field + small noise added from the Brownian motion</p>
-<p><u><strong>Diffusion Model</strong></u>: Convert init distribution(e.g. Gaussian) to data distribution</p>
-<p>​	<u>Neural networks</u></p>
-<p>​	<u>Diffusion coefficient</u>, fixed</p>
-<p>​	<u>Random init</u></p>
-<p>​	<u>SDE</u> </p>
-<h2 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h2><p>Conditional</p>
-<p>![image-20251105171739378](&#x2F;Users&#x2F;q&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20251105171739378.png)</p>
-<p>Marginal</p>
-<p>![image-20251105171756702](&#x2F;Users&#x2F;q&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20251105171756702.png)</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/11/30/Flow_Matching_and_Diffusion_Models/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -584,9 +557,15 @@ $(function () {
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-11-30 15:28:26 / Modified: 22:21:14" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+      <time title="Created: 2025-11-30 15:28:26" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-12-02 03:41:56" itemprop="dateModified" datetime="2025-12-02T03:41:56+08:00">2025-12-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -612,29 +591,14 @@ $(function () {
 <h2 id="Phase-1-LLM-Inference"><a href="#Phase-1-LLM-Inference" class="headerlink" title="Phase 1 : LLM Inference"></a>Phase 1 : LLM Inference</h2><p>llama-2-70b: powerful, open weights. The weights, architecture, paper are released by Meta. It’s unlike many other large language models you are familiar with. For example, Chatgpt’s architecture is never released. You are only allowed to use the model through the web page but you are not able to access the model.</p>
 <p>llama-2-70b is really just two files: parameters file, run.c</p>
 <p><code>parameters</code> are the weights or the parameters of this neural network. It contains 70 billion parameters, every parameter is stored as 2 bytes float 16 numbers as data type.</p>
-<h2 id="Phase-2"><a href="#Phase-2" class="headerlink" title="Phase 2"></a>Phase 2</h2><p>The magic is parameters and how to abtain them.</p>
-<p>Model taining is a lot more involved than model inference(running on your macbook). </p>
-<p>Compression from </p>
-<p>![image-20251020102748615](&#x2F;Users&#x2F;q&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20251020102748615.png)</p>
-<h2 id="Phase-3-Dreams"><a href="#Phase-3-Dreams" class="headerlink" title="Phase 3 Dreams"></a>Phase 3 Dreams</h2><p>Neural Network: <strong>Prediction</strong> and <strong>Compression</strong>. </p>
-<p>​	Input: cat, sat, on, the</p>
-<p>​	Output: mat</p>
-<p>All the knowledge is being compressed into weights. </p>
-<p>The network is ‘dreaming’.</p>
-<p>Iterate the Phase 3, put the output into input, </p>
-<h2 id="Phase-4-How-does-it-work"><a href="#Phase-4-How-does-it-work" class="headerlink" title="Phase 4 How does it work"></a>Phase 4 How does it work</h2><p>Transformer</p>
-<h2 id="Phase-5"><a href="#Phase-5" class="headerlink" title="Phase 5"></a>Phase 5</h2><p>The pre-training stage focus on a large quantity of text but low quality because they are from the internet. While the second stage perfer quality over quantity.</p>
-<h2 id="Phase-5-Summary"><a href="#Phase-5-Summary" class="headerlink" title="Phase 5 Summary"></a>Phase 5 Summary</h2><p>![image-20251020113151034](&#x2F;Users&#x2F;q&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20251020113151034.png)</p>
-<p>Base is not useable. If you give it a question, it will give you more questions. </p>
-<p>So Meta have done the stage 1 and they give the result llama-2-70b.</p>
-<p>Just like us, LLM uses browser to search for information and calculator to calculate.</p>
-<p>ChatGPT can generate and see images.</p>
-<p>System 1&#x2F;2 Thinking</p>
-<p>System 1 is like 2+2, instillctive, simple</p>
-<p>System 2 is 17*24, Slower, complex</p>
-<p>GPT now can just do System 1 thinking. </p>
-<p>LLM OS</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/11/30/Intro_to_LLM/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -688,9 +652,15 @@ $(function () {
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-11-30 15:28:26 / Modified: 22:19:41" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+      <time title="Created: 2025-11-30 15:28:26" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-12-02 03:41:49" itemprop="dateModified" datetime="2025-12-02T03:41:49+08:00">2025-12-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -721,77 +691,14 @@ $(function () {
 <p>​	一句话后面跟一个描述性的短句，用来描述细节。</p>
 <p>​	e.g: “I used a computer, the computer that has been with me for 5 years.”</p>
 <p>​	动作也可以进行描述</p>
-<ol start="6">
-<li><p>eventually 描述故事最终的结局</p>
-</li>
-<li><p>so keen on sth.</p>
-</li>
-<li><p>To some extent</p>
-</li>
-<li><p>deem 认为 &#x3D; reckon</p>
-<p>I deem&#x2F;believe&#x2F;think&#x2F;reckon that …</p>
-</li>
-<li><p>not to mention that</p>
-</li>
-</ol>
-<p>语言连贯性问题：说话没有逻辑，东一句西一句，容易偏题。</p>
-<p>多说，主动给考官提供更多信息</p>
-<h3 id="准备案例"><a href="#准备案例" class="headerlink" title="准备案例"></a>准备案例</h3><p>Study&#x2F;Work etc.</p>
-<ol>
-<li><p><u>Do you work or are you a student?</u></p>
-<p>I am a senior undergraduate student at Changzhou Institute of Technology,CIT for short.</p>
-</li>
-<li><p><u>What subject are you studying?</u></p>
-<p>I major in software engineering. </p>
-<p>I’m studying for a undergraduate degree in Changzhou Institute of Technology, specializing in the field of Software Engineering Studies.</p>
-</li>
-<li><p><u>Why did you choose that subject?</u></p>
-<p>Because I think that is cool. I used to like hackers because they could easily get your account password with just a flick of a finger, and then I realized that they are all the experts in software.But now I find that this is a very difficult process.</p>
-</li>
-<li><p><u>What would you like to do in the future?</u></p>
-<p>I would like to be a front-end engineer. During my four years in college, I often participated in the development of some software projects with my professors, such as web design, which are all front-end categories.</p>
-</li>
-<li><p><u>What are the most popular subjects in China?</u></p>
-<p>Actually, That depends. Economic situation of China is in decline due to the covid-19. So it’s hard to say.</p>
-</li>
-</ol>
-<h3 id="必考话题"><a href="#必考话题" class="headerlink" title="必考话题"></a>必考话题</h3><p>开头的第一个topic</p>
-<p>Where you live now？</p>
-<p>Hometown</p>
-<p>Work &#x2F; Study</p>
-<p>TS + SD</p>
-<p>topic sentense + Supporting Details</p>
-<p>第一个短语应该就是topic sentense，不要铺垫，直接提出观点。</p>
-<p>观点 + 描述细节</p>
-<p>充当推销员，说服考官我说的是对的。</p>
-<p>opinion</p>
-<p>description</p>
-<p>comparison</p>
-<p>prediction</p>
-<p>reason</p>
-<p>example</p>
-<p>result</p>
-<p>reference</p>
-<p>Yes + reason + example + opinion</p>
-<p>Yes + opinion + description + prediction</p>
-<p>No + reason + opinion + prediction + result</p>
-<h5 id="一般疑问句"><a href="#一般疑问句" class="headerlink" title="一般疑问句"></a>一般疑问句</h5><p>​	yes or no，之后再去说其他的东西</p>
-<h5 id="特殊疑问句"><a href="#特殊疑问句" class="headerlink" title="特殊疑问句"></a>特殊疑问句</h5><p>​	who&#x2F;where&#x2F;what&#x2F;when&#x2F;how</p>
-<p>不要重复问题：Q: What kind of work do you do ? A: My work is …，直接 I teach</p>
-<h5 id="选择疑问句"><a href="#选择疑问句" class="headerlink" title="选择疑问句"></a>选择疑问句</h5><p>Do you prefer drinking tea of coffee?  Coffee. Like latte art. I really love that.</p>
-<p>Neither&#x2F;Both</p>
-<h5 id="Hypothetical-Question"><a href="#Hypothetical-Question" class="headerlink" title="Hypothetical Question"></a>Hypothetical Question</h5><p>Yes&#x2F;No&#x2F;Maybe&#x2F;I don’t want to&#x2F;I think so</p>
-<h3 id="Personal-abstract-Methods-个人抽象技巧"><a href="#Personal-abstract-Methods-个人抽象技巧" class="headerlink" title="Personal abstract Methods (个人抽象技巧 )"></a>Personal abstract Methods (个人抽象技巧 )</h3><p>假设考官是一个跟你很久没见的人，你该怎么让他更好的了解你</p>
-<p>把中文说的更加英语化；想中文想它的一小部分</p>
-<p>再比如，要说“我很高兴我有杰克这样一个大学同学”，很多人也会直接翻译：“I’m so glad that I have such a college classmate like Jack”. 这个说法外国人或许听得懂，但就是感觉很Chinglish。英语思维就是描述这个人是谁，描述我们过去在大学都做了什么，从而让大家悟出我们是大学同学这个事实，甚至能联想到你们当年的情形。较为地道的说法是：</p>
-<p><em>He’s Jack, my former classmate. We spent some pleasant time together during college days.</em></p>
-<p>因此，当你说英语的时候，不要立刻想着字对字翻译，想想能否用简单描述的方式来解释，降低语言难度，就像对一个小学生说话一样。</p>
-<p>叙述一件事情，先把你要强调的放在前面，之后再用从句去加以描述，</p>
-<ul>
-<li><em>今天早上我坐地铁去上班的时候有个小孩给老人让座。</em><br><em>A kid offered his seat to an elderly man when I traveled to work on a tube this morning. (一个小孩给老人让座，在我今天早上坐地铁上班的时候。)</em></li>
-<li><em>我原本打算在今年1月访问中国，后来不得不推迟，这使我非常失望。</em><br><em>It was a keen disappointment when I had to postpone the visit which I intended to pay to China in January. (我非常失望，当我推迟这个访问的时候，我原本打算在今年1月访问中国的。)</em></li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/11/30/IELTS_speaking/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -845,9 +752,15 @@ $(function () {
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-11-30 15:28:26 / Modified: 22:20:41" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+      <time title="Created: 2025-11-30 15:28:26" itemprop="dateCreated datePublished" datetime="2025-11-30T15:28:26+08:00">2025-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-12-02 03:41:15" itemprop="dateModified" datetime="2025-12-02T03:41:15+08:00">2025-12-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -869,108 +782,15 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Deep-Dive-into-LLMs-like-ChatGPT"><a href="#Deep-Dive-into-LLMs-like-ChatGPT" class="headerlink" title="Deep Dive into LLMs like ChatGPT"></a>Deep Dive into LLMs like ChatGPT</h1><h2 id="Pretraining"><a href="#Pretraining" class="headerlink" title="Pretraining"></a>Pretraining</h2><p>url: <a target="_blank" rel="noopener" href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1</a></p>
-<h3 id="website-filter"><a href="#website-filter" class="headerlink" title="website filter"></a>website filter</h3><p>FineWeb si focused on English.</p>
-<p>One dimensional sequence layout in two-dimensional way</p>
-<h3 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h3><p>raw texts -&gt; symbols (tokens)</p>
-<p>How GPT4 do tokenization? </p>
-<h3 id="Neural-Network-Training"><a href="#Neural-Network-Training" class="headerlink" title="Neural Network Training"></a>Neural Network Training</h3><p>How these tokens follow each other in sequence</p>
-<p>probability how they follow each other</p>
-<p>parameters are randomly set</p>
-<h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p><strong>Generating new data from model</strong></p>
-<p>Network give us probebilities</p>
-<h3 id="Demo-reproducing-OpenAI’s-GPT-2"><a href="#Demo-reproducing-OpenAI’s-GPT-2" class="headerlink" title="Demo: reproducing OpenAI’s GPT-2"></a>Demo: reproducing OpenAI’s GPT-2</h3><p>GPT-2 was published by OpenAI in 2019</p>
-<p>Paper: “Language Models are Unsupervised Multitask Learners”</p>
-<p>Transformer neural networks with:</p>
-<ul>
-<li>1.6 billion parameters</li>
-<li>maximum context length of 1024 tokens (window)</li>
-<li>trained on about 100 billion tokens</li>
-</ul>
-<p>“Base” Model</p>
-<p>GPT2</p>
-<p>Llma3</p>
-<p>If you ask it questions, it still feedback questions. E.g. “What is 2+2?” The answer will not be “4, What else do you want me to answer.” It will just do tokenization to what comes next. </p>
-<p>First, it’s not an assistant yet it’s a token autocomplete. </p>
-<p>Second, it’s a stochastic(随机的) system</p>
-<p>recollection of some of the internet documents</p>
-<p>The model <strong>learn from the websites</strong> from internet. So if you enter the same texts as wiki, the output will be the same as wiki. Let’s say, these models can be extremely good at memorization. </p>
-<p>Wikipedia is a high quality source. So when you are training the model, you will preferencetially sample from those sources.</p>
-<p>The pretraining process -&gt; Base model “internet document simulator”</p>
-<h2 id="POST-TRAINING-Supervised-Fine-tuning"><a href="#POST-TRAINING-Supervised-Fine-tuning" class="headerlink" title="POST - TRAINING: Supervised Fine-tuning"></a>POST - TRAINING: Supervised Fine-tuning</h2><h3 id="Conversations"><a href="#Conversations" class="headerlink" title="Conversations"></a>Conversations</h3><p>Take Base model from Pretraining, continue training by exact same algorithms, the exact same everything except we’re swapping out the data set for conversations.</p>
-<h3 id="Conversation-Protocol"><a href="#Conversation-Protocol" class="headerlink" title="Conversation Protocol"></a>Conversation Protocol</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User : What <span class="keyword">is</span> <span class="number">2</span>+<span class="number">2</span>?</span><br><span class="line">assistant: <span class="number">2</span>+<span class="number">2</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;|im_start|&gt;</code>, <code>&lt;|im_sep|&gt;</code>, <code>&lt;|im_end|&gt;</code> These are the special tokens are introduced and interspersed with text so that they get the model to learn where is the start, end, sep.</p>
-<p>The conversation which we think is a structured object end up being turned via some encoding into one dimensional sequence of tokens. Because it’s <strong>one dimensional sequence</strong>, it means we can apply this as we apply before in pretraining.</p>
-<h3 id="Conversation-Datasets-DISPEL-the-magic-of-talking-to-AI"><a href="#Conversation-Datasets-DISPEL-the-magic-of-talking-to-AI" class="headerlink" title="Conversation Datasets: DISPEL the magic of talking to AI"></a><em><u>Conversation Datasets: DISPEL the magic of talking to AI</u></em></h3><p>When you go to ChatGPT and you give it a question and you hit enter. What is coming back is kind of like statistically <strong>aligned with what’s happening in the trainging set</strong>. In these training sets, they really have a seed in human following <strong>labeling</strong> instructions. </p>
-<p>So what are you actually talking to ChatGPT or how should you think about it? It’s not coming from some “magical” AI like roughly speaking. It’s coming from something that is statistically imitating <strong>human labelers</strong> which come from labeling instructions written by these <strong>companies</strong>. It’s almost as if you’re <strong>asking human labeler</strong>. Imagine that the answer that is given to you from ChatGPT is some kind of a simulation of a human labeler.</p>
-<p>The <strong>human labeler</strong> is the highly skilled <strong>experts</strong> which companies <strong>hire</strong>. </p>
-<p>But remember, the model already has a ton of knowledge from its pre-training on the internet. The <strong>pre-training knowledge</strong> that has then <strong>combined with the post-training data set</strong> that results in this kind of an imitation.</p>
-<h3 id="Hallucinations"><a href="#Hallucinations" class="headerlink" title="Hallucinations"></a>Hallucinations</h3><p>If you ask GPT who is an unknow man (who is not in the training model), the model.</p>
-<h4 id="Mitigation-1-“Sorry-I-don’t-know-”"><a href="#Mitigation-1-“Sorry-I-don’t-know-”" class="headerlink" title="Mitigation #1 “Sorry, I don’t know.”"></a>Mitigation #1 “Sorry, I don’t know.”</h4><p>Figure the boundary of its knowledge and then they add examples to the training set for the things where the model doesn’t know them, the correct answer is that <u>the model doesn’t know them.</u></p>
-<h4 id="Mitigation-2-Give-model-an-opportunity"><a href="#Mitigation-2-Give-model-an-opportunity" class="headerlink" title="Mitigation #2 Give model an opportunity"></a>Mitigation #2 Give model an opportunity</h4><p>If your friend asks you a question and you don’t know, what would you do? You could do some search and then tell me what answer is. We can do the exact same thing with these models.</p>
-<p>Think of the knowledge inside of the neural networks inside its billions of parameters. Think of that as a vague recollection of the things that the model has seen during the training or pre-training stages long time ago. From the perspective of human, think of that as something you read a month ago. If you keep reading something then you will remember it and the model remembers that. But if it’s something rare then you probably don’t hava a good recollections of that information. You and I just look it up. When you look it up, what you’re doning is basically <strong>refreshing your working memory.</strong> </p>
-<p><code>&lt;search_start&gt;</code>Who is Jie Qi?<code>&lt;search_end&gt;</code> Stop generating texts, model copy paste the question into Bing.com and the data in the web page is accessible to models.</p>
-<p>Traing the model how to use web search (tools) (where the <code>&lt;search_start&gt;</code> starts and <code>&lt;search_start&gt;</code> ends)</p>
-<p>*<u><strong>Knowledge in the parameters  &#x3D;&#x3D; Vague recollection (e.g. of something you read a month ago)</strong></u>*</p>
-<p><em><u><strong>Knowledge in the tokens of the context window &#x3D;&#x3D; Working memory</strong></u></em></p>
-<p><strong>We want the model to recall some significant things, it’s much better to just give it to them.</strong></p>
-<p>“Can you summarize for me chapter 1 of Jane Austen‘s pride and prejudice? <u>I’m attaching it below for your reference.</u>“</p>
-<p>You and I work in the same way. it will produce much better summary when you reread the chapter before you summarize it.</p>
-<h3 id="Knowledge-of-itself"><a href="#Knowledge-of-itself" class="headerlink" title="Knowledge of itself"></a>Knowledge of itself</h3><p>Q: Who built you? </p>
-<ol>
-<li><p>Hardcoded conversations around topics in the Conversation data.</p>
-<p>Q: Tell me about yourself.</p>
-<p>A: I’m OLMo, an open language model developed by AI2</p>
-</li>
-<li><p><strong>“system message”</strong> basically <strong>invisible tokens</strong> hidden in the context window and remind the model its identity: You are the model developed by OpenAI…</p>
-</li>
-</ol>
-<h3 id="Models-need-tokens-to-think"><a href="#Models-need-tokens-to-think" class="headerlink" title="Models need tokens to think"></a>Models need tokens to think</h3><p>e.g. 1 Try to do all the compstation in a single token</p>
-<p><u>The answer is $3.</u> This is because 2 oranges at $2 are $4 total. So the 3 apples cost $9, and therefore each apple is 9&#x2F;3&#x3D;$3.</p>
-<p>e.g. 2</p>
-<p>The total cost of the oranges is $4. 13-4&#x3D;9, the cost of the 3 apples is $9. 9&#x2F;3&#x3D;3, so each apple costs $3. <u>The answer is $3.</u></p>
-<p>There’s a finite amount of computation that happens here for every single token. You should think of this as a very small amount of comptation and this amount of computation is almost roughly fixed for every single token in this sequence. The more tokens you feed in, the more expensive this <strong>forward pass</strong> will be. </p>
-<img src="/Users/q/Library/Application Support/typora-user-images/image-20251027171633134.png" alt="image-20251027171633134" style="zoom:50%;" />
-
-
-
-<p>They are working on <strong>one dimensional</strong> sequence from <strong>left to right</strong>.</p>
-<p>The model basically do arbitrary computation in a single forward pass to get a single token. So We have to <strong>distribute</strong> our reasoning and our computeration across many tokens because every single token is only spending a finite amount of computation on it. We can’t have or expect too much computation out of the model in any single individual token because there’s only so much computation that happens per token roughly fixed amount of computation here.</p>
-<p>e.g. 1 Cram all of the computation of this problem into one single token. It has to emit the correct answer 3.</p>
-<p>It’s already in the token window so it’s not actually being calculated.</p>
-<p>So if you are answering the question directly and immediately, you are training the model to try to basically guess the answer in a single token. That is not gonna work because the finite amount of computation happens per token. </p>
-<p>left to right, slowly &#x3D;&#x3D; not that expensive</p>
-<p>We are teaching the model to spread out its reasoning and comptation over the tokens.</p>
-<h3 id="Models-can’t-count"><a href="#Models-can’t-count" class="headerlink" title="Models can’t count"></a>Models can’t count</h3><p>Models are not good with spelling. <strong>Models see tokens</strong>(text chunks), <strong>not individual letters</strong>.</p>
-<p>If you ask GPT: Print back the following string. But only print every 3rd character, start with the first one.</p>
-<p>It would be wrong answer.</p>
-<p>Models sometimes <strong>fall short</strong> in super simple problems like this: “What is bigger 9.11 or 9.9?”</p>
-<p>When you scrutinize the activations inside of the neural networks, when you look at some of the features and what features turn on and off and what neurons turn on and off. A bunch of neurons inside of the neural network light up that are usually associated with <strong>Bible verse</strong>.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>So far, the difference between Stage 1 pre-training and Stage 2 Post-training is the data set. </p>
-<p>Pre-training’s dataset is Internet documents. </p>
-<p>Post-training create and curate a very nice data set of conversations. So we want millions of conversations on all kinds of diverse topics between a human and an assistant. And these conversations are created by humans. So humans write prompts and ideal responses based on labeling documents. Currently language models {<a target="_blank" rel="noopener" href="https://atlas.nomic.ai/%7D">https://atlas.nomic.ai/}</a> can help us create these data sets.</p>
-<p>Then we get a <strong>SFT model</strong>, an assistant, trained by Supervised Finetuning</p>
-<h2 id="Post-training-Reinforcement-Learning"><a href="#Post-training-Reinforcement-Learning" class="headerlink" title="Post-training: Reinforcement Learning"></a>Post-training: Reinforcement Learning</h2><p>Just like you go to school, we let “<strong>models go to school</strong>“.</p>
-<p>Exposition: background knowledge, like pre-training </p>
-<p>Problems and worked Solutions: Supervised fine-tuning, imitation of experts, how they solve the problems </p>
-<p>Practice problems: reinforcement learning, Given the problem description, not the solutions, but given the final answer.</p>
-<p>We train them very similar to how we train children.</p>
-<p>Read all the textbooks at the same time. </p>
-<p>First, pre-training: Read all the exposition to build a knowledge base -&gt; base model</p>
-<p>Second, sft-stage: Look at all the fixed solutions from human experts across all the textbooks -&gt; sft model imitate experts.</p>
-<p>Last, Reinforcement Learning: Across all the textbooks, we only do the practice problems.</p>
-<h3 id="Deepseek-R1-brings-RL-back"><a href="#Deepseek-R1-brings-RL-back" class="headerlink" title="Deepseek R1 brings RL back"></a>Deepseek R1 brings RL back</h3><p>The previous two stages are very standard, all the different llm providers. But the last stage is not standard yet. </p>
-<h3 id="RLHF-Learning-in-underifiable-domains"><a href="#RLHF-Learning-in-underifiable-domains" class="headerlink" title="RLHF: Learning in underifiable domains"></a>RLHF: Learning in underifiable domains</h3><p>The domains that are harder to score our different solutions to this problem.</p>
-<p><strong>RLHF</strong> approach, involve humans just a little bit, then train a whole separate neural network that we call <strong>reward model</strong> which can <strong>imitate human scores</strong>. We ask humans to order instead of giving score because order is much easier than giving precise scores. Then compare the order from human and reward model, calculate the loss between these two order which is accessible by some kind of mathematical equations.</p>
-<p>reward model is gameable. 滥用</p>
-<p>There are two main stages we talked above. First the training stage where we tune the parameters of the model to perform the task well. Once we get the parameters, we fix them and then we deploy the model for inference. From there the model is fixed, it doesn’t change anymore. It doesn’t learn from all the stuff that it has done in test time. It’s <u><strong>fixed</strong></u> <strong>number of parameters</strong>. The only thing that is <u><strong>changing</strong></u> is now the <strong>token inside the context windows</strong>. </p>
-<p>So the only type of learning or test time learning the model <u>has access to</u> is the in context learning of its <strong>dynamically adjustable context window</strong> depending on what it is doing at test.</p>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>How do we see the output of ChatGPT?</p>
-<p><strong><u>The neural network simulation of data labeler at openai following the labeling instructions of OpenAI.</u></strong></p>
-<p>As if I gave a query to a data labeler of openai and the data labeler first reads all of the labeling instructions from openai then spend 2 hours writing up the ideal assistant response to this query and give it to me. But I don’t have to wait 2 hours so what we’re getting here is a neural network simulation of that process. We have to keep in mind that what’s easy for these neural networks are different from what’s easy or difficult for humans.</p>
-<p>GPT4o doesn’t do reinforcement learning, it does do RLHF. But RLHF is not RL, there’s no time in there. It’s just a little bit of fine-tuning.</p>
-
+          <h1 id="Deep-Dive-into-LLMs-like-ChatGPT"><a href="#Deep-Dive-into-LLMs-like-ChatGPT" class="headerlink" title="Deep Dive into LLMs like ChatGPT"></a>Deep Dive into LLMs like ChatGPT</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/11/30/Deep_into_LLMs/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1021,8 +841,6 @@ $(function () {
     <span>0%</span>
   </div>
   <div class="reading-progress-bar"></div>
-
-  <a href="https://github.com/Gecko778" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
